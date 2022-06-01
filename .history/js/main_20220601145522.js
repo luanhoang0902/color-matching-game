@@ -128,20 +128,16 @@ const main = () => {
 
     // in case of match, clear selection but keep active class. Nếu trùng thì sẽ đi đến dưới này. Tăng matchCount lên( khi đạt đủ 8 cặp là win)
     matchCount++;
-    // Reset để thực hiện lựa chọn cặp tiếp theo.
     selection = [];
-    // Lấy màu trùng vừa xét được đưa làm màu nền
     colorBackground.style.backgroundColor = randomColorList[idx];
 
-    // Check win state. Kiểm tra xem đã win chưa thông qua biến matchCount.
+    // Check win state
     if (matchCount === PAIRS_COUNT) {
-      // Stop timer. Win rồi thì dừng luôn setInterval không cần chạy hết thời gian nữa.
+      // Stop timer
       clearInterval(countdownInterval);
-      // Báo win lên.
+
       timerElement.textContent = 'You WIN! 😍';
-      // Hiện button
       playAgainButton.style.display = 'block';
-      // Chuyển trạng thái sang FINISHED
       gameState === GAME_STATE.FINISHED;
     }
   }

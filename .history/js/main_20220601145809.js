@@ -135,13 +135,11 @@ const main = () => {
 
     // Check win state. Kiểm tra xem đã win chưa thông qua biến matchCount.
     if (matchCount === PAIRS_COUNT) {
-      // Stop timer. Win rồi thì dừng luôn setInterval không cần chạy hết thời gian nữa.
+      // Stop timer
       clearInterval(countdownInterval);
-      // Báo win lên.
+
       timerElement.textContent = 'You WIN! 😍';
-      // Hiện button
       playAgainButton.style.display = 'block';
-      // Chuyển trạng thái sang FINISHED
       gameState === GAME_STATE.FINISHED;
     }
   }

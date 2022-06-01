@@ -1,7 +1,6 @@
-// Hàm random array
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    // Tạo ra một con số nhỏ hơn i. 0 < Math.random < 1. Math.floor lấy phần nguyên
     let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
 
     // swap elements array[i] and array[j]
@@ -33,7 +32,7 @@ export const getRandomColorPairs = (count) => {
   // double current color list. Tạo danh sách cặp màu bằng spead array. Tuy nhiên nó lại theo thứ tự nên không được.
   const fullColorList = [...colorList, ...colorList];
 
-  // Shuffle color list. Dùng shuffle để random vị trí phần tử trong mảng.
+  // Shuffle color list. 
   shuffle(fullColorList);
 
   return fullColorList;

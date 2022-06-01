@@ -89,9 +89,8 @@ const main = () => {
     init();
   });
 
-  // Hàm xử lý khi onclick thẻ li
+
   const handleColorClick = (item, idx) => {
-    // Các trường hợp ko xử lý gì. item không tồn tại, có chứa class active, trang thái là BLOCKING và FINISHED, khi time chạy về 0.
     if (
       !item
       || item.classList.contains('active')
@@ -100,22 +99,19 @@ const main = () => {
       || timer < 0
     ) return;
 
-    // Add item to selection. Biến lưu chữ vị trí click selection nhận giá trị. thẻ li được add class active. Nếu trong mảng selection có 2 phần tử thì mới thực hiện được tiếp xuống dưới. 
+    // Add item to selection
     selection.push(idx);
     item.classList.add('active');
-    console.log(selection.length)
     if (selection.length < 2) return;
 
-    // Check matching when two colors selected. Kiểm tra xem hai màu vừa được chọn có cùng màu ko.
+    // Check matching when two colors selected
     const firstColor = randomColorList[selection[0]];
     const secondColor = randomColorList[selection[1]];
     const isMatch = firstColor === secondColor;
 
-    // in case not match, clear selection and remove active class from selected items. Nếu không trùng thì thực hiện những thứ sau.
+    // in case not match, clear selection and remove active class from selected items
     if (!isMatch) {
-      // Chuyển trạng thái sang BLOCKING. Không thể chọn được nữa
       gameState = GAME_STATE.BLOCKING;
-      // Set thời gian gỡ trạng thái active và khởi tạo lại selection. Điều này tương ứng với nếu như trùng thì class active không bị gỡ bỏ và các ô trùng sẽ hiện.
       setTimeout(() => {
         colorItemList[selection[0]].classList.remove('active');
         colorItemList[selection[1]].classList.remove('active');
@@ -126,22 +122,18 @@ const main = () => {
       return;
     }
 
-    // in case of match, clear selection but keep active class. Nếu trùng thì sẽ đi đến dưới này. Tăng matchCount lên( khi đạt đủ 8 cặp là win)
+    // in case of match, clear selection but keep active class
     matchCount++;
-    // Reset để thực hiện lựa chọn cặp tiếp theo.
     selection = [];
-    // Lấy màu trùng vừa xét được đưa làm màu nền
     colorBackground.style.backgroundColor = randomColorList[idx];
 
-    // Check win state. Kiểm tra xem đã win chưa thông qua biến matchCount.
+    // Check win state
     if (matchCount === PAIRS_COUNT) {
-      // Stop timer. Win rồi thì dừng luôn setInterval không cần chạy hết thời gian nữa.
+      // Stop timer
       clearInterval(countdownInterval);
-      // Báo win lên.
+
       timerElement.textContent = 'You WIN! 😍';
-      // Hiện button
       playAgainButton.style.display = 'block';
-      // Chuyển trạng thái sang FINISHED
       gameState === GAME_STATE.FINISHED;
     }
   }

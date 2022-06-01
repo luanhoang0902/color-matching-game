@@ -141,7 +141,6 @@ const main = () => {
       timerElement.textContent = 'You WIN! 😍';
       // Hiện button
       playAgainButton.style.display = 'block';
-      // Chuyển trạng thái sang FINISHED
       gameState === GAME_STATE.FINISHED;
     }
   }
